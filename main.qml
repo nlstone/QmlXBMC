@@ -126,6 +126,16 @@ Window {
                 opacity: 0
                 visible: false
             }
+            MusicView {
+                id: idMusicView
+                opacity: 0
+                visible: false
+            }
+            ProgramsView {
+                id: idProgramsView
+                opacity: 0
+                visible: false
+            }
         }
 
         NumberAnimation {
@@ -136,6 +146,12 @@ Window {
         }
         NumberAnimation {
             id: showPicturesView; target: idPicturesView; property: "opacity"; to: 1; duration: 200
+        }
+        NumberAnimation {
+            id: showMusicView; target: idMusicView; property: "opacity"; to: 1; duration: 200
+        }
+        NumberAnimation {
+            id: showProgramsView; target: idProgramsView; property: "opacity"; to: 1; duration: 200
         }
 
         states: [
@@ -160,10 +176,115 @@ Window {
                 PropertyChanges { target: idHomeView; visible: false }
                 PropertyChanges { target: idPicturesView; visible: true }
                 PropertyChanges { target: idHomeIcon; visible: true }
+            },
+            State {
+                name: "statemusicview"
+                PropertyChanges {target: idHomeView; opacity: 0 }
+                PropertyChanges { target: idHomeView; visible: false }
+                PropertyChanges { target: idMusicView; visible: true }
+                PropertyChanges { target: idHomeIcon; visible: true }
+            },
+            State {
+                name: "stateprogramsview"
+                PropertyChanges {target: idHomeView; opacity: 0 }
+                PropertyChanges { target: idHomeView; visible: false }
+                PropertyChanges { target: idProgramsView; visible: true }
+                PropertyChanges { target: idHomeIcon; visible: true }
             }
 
         ]
 
+        Column {
+            id: idExit
+            width: 64
+            height: 100
+            anchors.left: parent.left
+            anchors.leftMargin: 50
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+
+            Image {
+                id: idExitBack
+                source: "media/IconBack.png"
+                width: 64
+                height: 64
+                Image {
+                    source: "media/icon_shutdown.png"
+                    anchors.fill: parent
+                    fillMode: Image.Stretch
+
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+
+                        onEntered: {
+                            idExitBack.source = "media/IconBack-focus.png"
+                        }
+
+                        onExited: {
+                            idExitBack.source = "media/IconBack.png"
+                        }
+
+                        onClicked: {
+                            Qt.quit()
+                        }
+
+                    }
+                }
+            }
+
+            Image {
+                width: 64
+                height: 36
+                source: "media/OSDProgressBack.png"
+                fillMode: Image.Stretch
+            }
+        }
+        Column {
+            id: idSettings
+            width: 64
+            height: 100
+            anchors.left: idExit.right
+            anchors.leftMargin: 50
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+
+            Image {
+                id: idSettingsBack
+                source: "media/IconBack.png"
+                width: 64
+                height: 64
+                Image {
+                    source: "media/icon_settings.png"
+                    anchors.fill: parent
+                    fillMode: Image.Stretch
+
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+
+                        onEntered: {
+                            idSettingsBack.source = "media/IconBack-focus.png"
+                        }
+
+                        onExited: {
+                            idSettingsBack.source = "media/IconBack.png"
+                        }
+
+                        onClicked: {
+
+                        }
+                    }
+                }
+            }
+
+            Image {
+                width: 64
+                height: 36
+                source: "media/OSDProgressBack.png"
+                fillMode: Image.Stretch
+            }
+        }
     }
 
 }

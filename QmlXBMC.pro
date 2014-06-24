@@ -16,4 +16,6 @@ OTHER_FILES += \
     main.qml \
     VideoView.qml \
     HomeView.qml \
-    PicturesView.qml
+    PicturesView.qml \
+    MusicView.qml \
+    ProgramsView.qml
