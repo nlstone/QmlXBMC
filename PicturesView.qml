@@ -45,7 +45,7 @@ Item {
     }    
 
     ListView{
-        id: idVideoListView
+        id: idPicturesListView
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.leftMargin: 100
@@ -58,12 +58,29 @@ Item {
         width: parent.width - 200
 
         model: idPicturesListModal
-        delegate: videoDelegate
+        delegate: idPicturesListDelegate
         property string viewType: "VideoMainView"
+        visible: idMainWindow.viewType == "list"
+
+    }
+
+    GridView {
+        id: idPicturesGridView
+        anchors.fill: parent
+        anchors.leftMargin: 20
+        anchors.rightMargin: 20
+        anchors.topMargin: 20
+        visible: idMainWindow.viewType != "list"
+
+        cellHeight: 256
+        cellWidth: 256
+        delegate: idPicturesIconDelegate
+        model: idPicturesListModal
+
     }
 
     Component {
-        id: videoDelegate        
+        id: idPicturesListDelegate
         Item {
             width: parent.width
             height: 60
@@ -72,7 +89,7 @@ Item {
                 anchors.fill: parent
                 hoverEnabled: true
                 onEntered: {
-                    idVideoListView.currentIndex = index;
+                    idPicturesListView.currentIndex = index;
                 }                
             }
 
@@ -100,6 +117,44 @@ Item {
                     font.pointSize: 24
                     text: content
                     color: "white"
+                }
+            }
+        }
+    }
+
+    Component {
+        id: idPicturesIconDelegate
+
+        Item {
+            width: idPicturesGridView.cellWidth
+            height: idPicturesGridView.cellHeight
+            Image {
+                source: index === idPicturesGridView.currentIndex ? "media/SubBack2.png" : "media/SubBack.png"
+                Image {
+                    source: iconPath
+                    anchors.fill: parent
+                    anchors.leftMargin: 20
+                    anchors.rightMargin: 20
+                    anchors.topMargin: 20
+                    anchors.bottomMargin: 20
+                }
+
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pointSize: 16
+                    text: content
+                    color: "white"
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                    idPicturesGridView.currentIndex = index;
                 }
             }
         }

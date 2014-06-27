@@ -102,7 +102,7 @@ Item {
         anchors.top: parent.top
         anchors.leftMargin: 100
         anchors.topMargin: 50
-        focus: true
+
         highlight: Rectangle { color: "lightsteelblue"; radius: 4}
         highlightResizeDuration: 0
 
@@ -110,12 +110,27 @@ Item {
         width: parent.width - 200
 
         model: idVideoListModal
-        delegate: videoDelegate
+        visible: idMainWindow.viewType == "list"
+        delegate: videoListDelegate
         property string viewType: "VideoMainView"
     }
 
+    GridView {
+        id: idVideoGridView
+        anchors.fill: parent
+        anchors.leftMargin: 20
+        anchors.rightMargin: 20
+        anchors.topMargin: 20
+        visible: idMainWindow.viewType != "list"
+
+        cellHeight: 256
+        cellWidth: 256
+        delegate: videoIconDelegate
+        model: idVideoListModal
+    }
+
     Component {
-        id: videoDelegate        
+        id: videoListDelegate
         Item {
             width: parent.width
             height: 60
@@ -187,6 +202,77 @@ Item {
         }
     }
 
+    Component {
+        id: videoIconDelegate
+
+        Item {
+            width: idVideoGridView.cellWidth
+            height: idVideoGridView.cellHeight
+            Image {
+                source: index === idVideoGridView.currentIndex ? "media/SubBack2.png" : "media/SubBack.png"
+                Image {
+                    source: iconPath
+                    anchors.fill: parent
+                    anchors.leftMargin: 20
+                    anchors.rightMargin: 20
+                    anchors.topMargin: 20
+                    anchors.bottomMargin: 20
+                }
+
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pointSize: 16
+                    text: content
+                    color: "white"
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                    idVideoGridView.currentIndex = index;
+                }
+                onClicked: {
+                    if( idVideoListView.viewType == "VideoMainView" )
+                    {
+                        if( index == 0 )
+                        {
+                            idVideoListView.viewType = "VideoFilesView";
+                            idVideoListView.model = idVideoFilesModal;
+                            idVideoGridView.model = idVideoFilesModal;
+                        }
+                        else if( index == 1 )
+                        {
+                            idVideoListView.viewType = "VideoPlaylistsView";
+                            idVideoListView.model = idVideoPlaylistsModal;
+                            idVideoGridView.model = idVideoPlaylistsModal;
+                        }
+                        else if( index == 2 )
+                        {
+                            idVideoListView.viewType = "VideoAddonsView";
+                            idVideoListView.model = idVideoAddonsModal;
+                            idVideoGridView.model = idVideoAddonsModal;
+                        }
+                    }
+                    else if( idVideoListView.viewType == "VideoFilesView" ||
+                            idVideoListView.viewType == "VideoPlaylistsView" ||
+                            idVideoListView.viewType == "VideoAddonsView" )
+                    {
+                        if( index == 0 )
+                        {
+                            idVideoListView.viewType = "VideoMainView";
+                            idVideoListView.model = idVideoListModal;
+                            idVideoGridView.model = idVideoListModal;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 

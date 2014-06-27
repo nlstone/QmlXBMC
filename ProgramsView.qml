@@ -52,13 +52,28 @@ Item {
         height: 400
         width: parent.width - 200
 
+        model: idProgramsListModal        
+        delegate: idProgramsListDelegate
+        visible: idMainWindow.viewType == "list"
+    }
+
+    GridView {
+        id: idProgramsGridView
+        anchors.fill: parent
+        anchors.leftMargin: 20
+        anchors.rightMargin: 20
+        anchors.topMargin: 20
+        visible: idMainWindow.viewType != "list"
+
+        cellHeight: 256
+        cellWidth: 256
+        delegate: idProgramsIconDelegate
         model: idProgramsListModal
-        delegate: idProgramsDelegate
-        property string viewType: "ProgramsMainView"
+
     }
 
     Component {
-        id: idProgramsDelegate
+        id: idProgramsListDelegate
         Item {
             width: parent.width
             height: 60
@@ -95,6 +110,44 @@ Item {
                     font.pointSize: 24
                     text: content
                     color: "white"
+                }
+            }
+        }
+    }
+
+    Component {
+        id: idProgramsIconDelegate
+
+        Item {
+            width: idProgramsGridView.cellWidth
+            height: idProgramsGridView.cellHeight
+            Image {
+                source: index === idProgramsGridView.currentIndex ? "media/SubBack2.png" : "media/SubBack.png"
+                Image {
+                    source: iconPath
+                    anchors.fill: parent
+                    anchors.leftMargin: 20
+                    anchors.rightMargin: 20
+                    anchors.topMargin: 20
+                    anchors.bottomMargin: 20
+                }
+
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pointSize: 16
+                    text: content
+                    color: "white"
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                    idProgramsGridView.currentIndex = index;
                 }
             }
         }
