@@ -19,4 +19,5 @@ OTHER_FILES += \
     PicturesView.qml \
     MusicView.qml \
     ProgramsView.qml \
-    SettingView.qml
+    SettingView.qml \
+    SettingContentView.qml

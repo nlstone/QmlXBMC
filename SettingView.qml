@@ -16,12 +16,12 @@ Item {
 
             Grid {
                 columns: 2
-                spacing: 50
+                spacing: 20
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
 
                 Rectangle {
-                    width: idSettingMainContentRect.width / 10 * 4
+                    width: idSettingMainContentRect.width / 10 * 4.5
                     height: idSettingMainContentRect.height / 10 * 2
 
                     Image {
@@ -30,9 +30,12 @@ Item {
                     }                    
 
                     Row {
+                        anchors.fill: parent
                         Column {
                             spacing: 20
-                            width: parent.width / 5 * 4
+                            width: parent.width - parent.height
+                            height: parent.height
+
                             Text {
                                 text: "Appearance"
                                 font.family: "Helvetica"
@@ -42,7 +45,7 @@ Item {
                             }
 
                             Text {
-                                text: "Change the skin. Set language and region\nChange file listing options. Set up a\nscreensaver"
+                                text: "Change the skin. Set language and region\nChange file listing options.Set up a\nscreensaver"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 12
@@ -51,14 +54,23 @@ Item {
                         }
 
                         Image {
-                            width: parent.width / 5
+                            width: parent.height
+                            height: parent.height
                             source: "media/icon_big_appearence.png"
+                        }
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            showSettingContentView.running = true
+                            idMainWindow.state = "statesettingappearanceview"
                         }
                     }
                 }
 
                 Rectangle {
-                    width: idSettingMainContentRect.width / 10 * 4
+                    width: idSettingMainContentRect.width / 10 * 4.5
                     height: idSettingMainContentRect.height / 10 * 2
 
                     Image {
@@ -67,10 +79,14 @@ Item {
                     }
 
                     Row {
+                        anchors.fill: parent
                         Column {
-                            width: parent.width / 5 * 4
+                            spacing: 20
+                            width: parent.width - parent.height
+                            height: parent.height
+
                             Text {
-                                text: "Appearance"
+                                text: "Video"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 20
@@ -78,7 +94,7 @@ Item {
                             }
 
                             Text {
-                                text: "Change the skin. Set language and region\nChange file listing options. Set up a\nscreensaver"
+                                text: "Manage your video library. Set video playback\noptions.Change video library listing options. Set\nsubtitle fonts"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 12
@@ -87,14 +103,15 @@ Item {
                         }
 
                         Image {
-                            width: parent.width / 5
-                            source: "media/icon_big_appearence.png"
+                            width: parent.height
+                            height: parent.height
+                            source: "media/icon_big_video.png"
                         }
                     }
                 }
 
                 Rectangle {
-                    width: idSettingMainContentRect.width / 10 * 4
+                    width: idSettingMainContentRect.width / 10 * 4.5
                     height: idSettingMainContentRect.height / 10 * 2
 
                     Image {
@@ -103,10 +120,14 @@ Item {
                     }
 
                     Row {
+                        anchors.fill: parent
                         Column {
-                            width: parent.width / 5 * 4
+                            spacing: 20
+                            width: parent.width - parent.height
+                            height: parent.height
+
                             Text {
-                                text: "Appearance"
+                                text: "Music"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 20
@@ -114,7 +135,7 @@ Item {
                             }
 
                             Text {
-                                text: "Change the skin. Set language and region\nChange file listing options. Set up a\nscreensaver"
+                                text: "Manage your music library. Set music playback\noptions. Change music listing options. Setup\nsong submission. Set karaoke options"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 12
@@ -123,14 +144,15 @@ Item {
                         }
 
                         Image {
-                            width: parent.width / 5
-                            source: "media/icon_big_appearence.png"
+                            width: parent.height
+                            height: parent.height
+                            source: "media/icon_big_music.png"
                         }
                     }
                 }
 
                 Rectangle {
-                    width: idSettingMainContentRect.width / 10 * 4
+                    width: idSettingMainContentRect.width / 10 * 4.5
                     height: idSettingMainContentRect.height / 10 * 2
 
                     Image {
@@ -139,10 +161,14 @@ Item {
                     }
 
                     Row {
+                        anchors.fill: parent
                         Column {
-                            width: parent.width / 5 * 4
+                            spacing: 20
+                            width: parent.width - parent.height
+                            height: parent.height
+
                             Text {
-                                text: "Appearance"
+                                text: "Pictures"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 20
@@ -150,7 +176,7 @@ Item {
                             }
 
                             Text {
-                                text: "Change the skin. Set language and region\nChange file listing options. Set up a\nscreensaver"
+                                text: "Set picture listing options. Configure\nslideshows"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 12
@@ -159,14 +185,15 @@ Item {
                         }
 
                         Image {
-                            width: parent.width / 5
-                            source: "media/icon_big_appearence.png"
+                            width: parent.height
+                            height: parent.height
+                            source: "media/icon_big_pictures.png"
                         }
                     }
                 }
 
                 Rectangle {
-                    width: idSettingMainContentRect.width / 10 * 4
+                    width: idSettingMainContentRect.width / 10 * 4.5
                     height: idSettingMainContentRect.height / 10 * 2
 
                     Image {
@@ -175,10 +202,14 @@ Item {
                     }
 
                     Row {
+                        anchors.fill: parent
                         Column {
-                            width: parent.width / 5 * 4
+                            spacing: 20
+                            width: parent.width - parent.height
+                            height: parent.height
+
                             Text {
-                                text: "Appearance"
+                                text: "Weather"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 20
@@ -186,7 +217,7 @@ Item {
                             }
 
                             Text {
-                                text: "Change the skin. Set language and region\nChange file listing options. Set up a\nscreensaver"
+                                text: "Set three cities to collect weather information"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 12
@@ -195,14 +226,15 @@ Item {
                         }
 
                         Image {
-                            width: parent.width / 5
-                            source: "media/icon_big_appearence.png"
+                            width: parent.height
+                            height: parent.height
+                            source: "media/icon_big_weather.png"
                         }
                     }
                 }
 
                 Rectangle {
-                    width: idSettingMainContentRect.width / 10 * 4
+                    width: idSettingMainContentRect.width / 10 * 4.5
                     height: idSettingMainContentRect.height / 10 * 2
 
                     Image {
@@ -211,10 +243,14 @@ Item {
                     }
 
                     Row {
+                        anchors.fill: parent
                         Column {
-                            width: parent.width / 5 * 4
+                            spacing: 20
+                            width: parent.width - parent.height
+                            height: parent.height
+
                             Text {
-                                text: "Appearance"
+                                text: "Add-ons"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 20
@@ -222,7 +258,7 @@ Item {
                             }
 
                             Text {
-                                text: "Change the skin. Set language and region\nChange file listing options. Set up a\nscreensaver"
+                                text: "Manager your installed Add-ons. Browse for and \ninstall Add-ons from xbmc.org. Modify Add-on\n settings"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 12
@@ -231,14 +267,15 @@ Item {
                         }
 
                         Image {
-                            width: parent.width / 5
-                            source: "media/icon_big_appearence.png"
+                            width: parent.height
+                            height: parent.height
+                            source: "media/icon_big_addons.png"
                         }
                     }
                 }
 
                 Rectangle {
-                    width: idSettingMainContentRect.width / 10 * 4
+                    width: idSettingMainContentRect.width / 10 * 4.5
                     height: idSettingMainContentRect.height / 10 * 2
 
                     Image {
@@ -247,10 +284,14 @@ Item {
                     }
 
                     Row {
+                        anchors.fill: parent
                         Column {
-                            width: parent.width / 5 * 4
+                            spacing: 20
+                            width: parent.width - parent.height
+                            height: parent.height
+
                             Text {
-                                text: "Appearance"
+                                text: "Services"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 20
@@ -258,7 +299,7 @@ Item {
                             }
 
                             Text {
-                                text: "Change the skin. Set language and region\nChange file listing options. Set up a\nscreensaver"
+                                text: "Setup control of XBMC via UPnP and HTTP.\nConfigure file sharing. Set internet access\noptions"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 12
@@ -267,14 +308,15 @@ Item {
                         }
 
                         Image {
-                            width: parent.width / 5
-                            source: "media/icon_big_appearence.png"
+                            width: parent.height
+                            height: parent.height
+                            source: "media/icon_big_network.png"
                         }
                     }
                 }
 
                 Rectangle {
-                    width: idSettingMainContentRect.width / 10 * 4
+                    width: idSettingMainContentRect.width / 10 * 4.5
                     height: idSettingMainContentRect.height / 10 * 2
 
                     Image {
@@ -283,10 +325,14 @@ Item {
                     }
 
                     Row {
+                        anchors.fill: parent
                         Column {
-                            width: parent.width / 5 * 4
+                            spacing: 20
+                            width: parent.width - parent.height
+                            height: parent.height
+
                             Text {
-                                text: "Appearance"
+                                text: "System"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 20
@@ -294,7 +340,7 @@ Item {
                             }
 
                             Text {
-                                text: "Change the skin. Set language and region\nChange file listing options. Set up a\nscreensaver"
+                                text: "Setup and calibrate displays. Configure audio\noutput. Setup remote controls. Set power\nsaving options. Enable debugging. Setup\nmaster lock"
                                 font.family: "Helvetica"
                                 font.bold: true
                                 font.pointSize: 12
@@ -303,13 +349,13 @@ Item {
                         }
 
                         Image {
-                            width: parent.width / 5
-                            source: "media/icon_big_appearence.png"
+                            width: parent.height
+                            height: parent.height
+                            source: "media/icon_big_system.png"
                         }
                     }
                 }
             }
-
         }
 
         Image {
@@ -320,7 +366,30 @@ Item {
         }
 
         anchors.fill: parent
-    }    
+    }
+
+    states: [
+        State {
+            name: "settingmainview"
+            PropertyChanges {target: idVideoView; opacity: 0 }
+            PropertyChanges { target: idVideoView; visible: false }
+            PropertyChanges { target: idHomeView; visible: true }
+            PropertyChanges { target: idHomeIcon; visible: false }
+            PropertyChanges { target: idHomeMenuRow; visible: true }
+            PropertyChanges { target: idSubMenuRow; visible: false }
+
+        },
+        State {
+            name: "settingappearanceview"
+            PropertyChanges {target: idVideoView; opacity: 0 }
+            PropertyChanges { target: idVideoView; visible: false }
+            PropertyChanges { target: idHomeView; visible: true }
+            PropertyChanges { target: idHomeIcon; visible: false }
+            PropertyChanges { target: idHomeMenuRow; visible: true }
+            PropertyChanges { target: idSubMenuRow; visible: false }
+
+        }
+            ]
 }
 
 

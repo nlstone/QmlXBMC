@@ -13,11 +13,6 @@ Window {
         anchors.fill: parent
         property string viewType: "list"
 
-        Image {
-            source: "media/background/background.png"
-            anchors.fill: parent
-        }
-
         Column {
             Rectangle {
                 id: idHeadRect
@@ -108,8 +103,6 @@ Window {
 
                     source: "media/HeaderProgressBack.png"
                 }
-
-
             }
 
             HomeView {
@@ -143,6 +136,11 @@ Window {
                 opacity: 0
                 visible: false
             }
+            SettingContentView {
+                id: idSettingContentView
+                opacity: 0
+                visible: false
+            }
         }
 
         NumberAnimation {
@@ -162,6 +160,9 @@ Window {
         }
         NumberAnimation {
             id: showSettingView; target: idSettingView; property: "opacity"; to: 1; duration: 200
+        }
+        NumberAnimation {
+            id: showSettingContentView; target: idSettingContentView; property: "opacity"; to: 1; duration: 200
         }
 
         Row {
@@ -437,7 +438,7 @@ Window {
                 PropertyChanges { target: idVideoView; visible: true }
                 PropertyChanges { target: idHomeIcon; visible: true }
                 PropertyChanges { target: idHomeMenuRow; visible: false }
-                PropertyChanges { target: idSubViewMenuRow; visible: true }
+                PropertyChanges { target: idSubViewMenuRow; visible: true }                
             },
             State {
                 name: "statepicturesview"
@@ -474,7 +475,17 @@ Window {
                 PropertyChanges { target: idHomeIcon; visible: true }
                 PropertyChanges { target: idHomeMenuRow; visible: false }
                 PropertyChanges { target: idSubViewMenuRow; visible: true }
-            }
+            },
+            State {
+                 name: "statesettingappearanceview"
+                 PropertyChanges { target: idHomeView; opacity: 0 }
+                 PropertyChanges { target: idHomeView; visible: false }
+                 PropertyChanges { target: idSettingView; visible: false }
+                 PropertyChanges { target: idHomeIcon; visible: true }
+                 PropertyChanges { target: idHomeMenuRow; visible: false }
+                 PropertyChanges { target: idSubViewMenuRow; visible: true }
+                 PropertyChanges { target: idSettingContentView; visible: true }
+             }
         ]
     }
 }

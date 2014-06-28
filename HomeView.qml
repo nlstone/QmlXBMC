@@ -41,8 +41,8 @@ Item {
 
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: {
-                                showVideoView.running = true
+                            onClicked: {                                
+                                showVideoView.running = true                                
                                 idMainWindow.state = "statevideoview"
                             }
                         }
