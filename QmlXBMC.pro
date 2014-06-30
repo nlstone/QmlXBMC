@@ -20,4 +20,5 @@ OTHER_FILES += \
     MusicView.qml \
     ProgramsView.qml \
     SettingView.qml \
-    SettingContentView.qml
+    SettingContentView.qml \
+    AppearanceContentModel.qml

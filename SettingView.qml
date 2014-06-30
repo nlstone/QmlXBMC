@@ -31,6 +31,8 @@ Item {
 
                     Row {
                         anchors.fill: parent
+                        anchors.topMargin: 15
+                        anchors.leftMargin: 20
                         Column {
                             spacing: 20
                             width: parent.width - parent.height
@@ -63,8 +65,9 @@ Item {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
+                            idSettingContentView.state = "appearanceview"
                             showSettingContentView.running = true
-                            idMainWindow.state = "statesettingappearanceview"
+                            idMainWindow.state = "statesettingcontentview"
                         }
                     }
                 }
@@ -80,6 +83,8 @@ Item {
 
                     Row {
                         anchors.fill: parent
+                        anchors.topMargin: 15
+                        anchors.leftMargin: 20
                         Column {
                             spacing: 20
                             width: parent.width - parent.height
@@ -108,6 +113,15 @@ Item {
                             source: "media/icon_big_video.png"
                         }
                     }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            idSettingContentView.state = "videoview"
+                            showSettingContentView.running = true
+                            idMainWindow.state = "statesettingcontentview"
+                        }
+                    }
                 }
 
                 Rectangle {
@@ -121,6 +135,8 @@ Item {
 
                     Row {
                         anchors.fill: parent
+                        anchors.topMargin: 15
+                        anchors.leftMargin: 20
                         Column {
                             spacing: 20
                             width: parent.width - parent.height
@@ -149,6 +165,15 @@ Item {
                             source: "media/icon_big_music.png"
                         }
                     }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            idSettingContentView.state = "musicview"
+                            showSettingContentView.running = true
+                            idMainWindow.state = "statesettingcontentview"
+                        }
+                    }
                 }
 
                 Rectangle {
@@ -162,6 +187,8 @@ Item {
 
                     Row {
                         anchors.fill: parent
+                        anchors.topMargin: 15
+                        anchors.leftMargin: 20
                         Column {
                             spacing: 20
                             width: parent.width - parent.height
@@ -190,6 +217,15 @@ Item {
                             source: "media/icon_big_pictures.png"
                         }
                     }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            idSettingContentView.state = "picturesview"
+                            showSettingContentView.running = true
+                            idMainWindow.state = "statesettingcontentview"
+                        }
+                    }
                 }
 
                 Rectangle {
@@ -203,6 +239,8 @@ Item {
 
                     Row {
                         anchors.fill: parent
+                        anchors.topMargin: 15
+                        anchors.leftMargin: 20
                         Column {
                             spacing: 20
                             width: parent.width - parent.height
@@ -231,6 +269,15 @@ Item {
                             source: "media/icon_big_weather.png"
                         }
                     }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            idSettingContentView.state = "weatherview"
+                            showSettingContentView.running = true
+                            idMainWindow.state = "statesettingcontentview"
+                        }
+                    }
                 }
 
                 Rectangle {
@@ -244,6 +291,8 @@ Item {
 
                     Row {
                         anchors.fill: parent
+                        anchors.topMargin: 15
+                        anchors.leftMargin: 20
                         Column {
                             spacing: 20
                             width: parent.width - parent.height
@@ -285,6 +334,8 @@ Item {
 
                     Row {
                         anchors.fill: parent
+                        anchors.topMargin: 15
+                        anchors.leftMargin: 20
                         Column {
                             spacing: 20
                             width: parent.width - parent.height
@@ -326,6 +377,8 @@ Item {
 
                     Row {
                         anchors.fill: parent
+                        anchors.topMargin: 15
+                        anchors.leftMargin: 20
                         Column {
                             spacing: 20
                             width: parent.width - parent.height

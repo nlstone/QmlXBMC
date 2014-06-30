@@ -7,11 +7,16 @@ Window {
     height: 960
     id: idScreenWindow
 
+    Image {
+        source: "media/background/background.png"
+        anchors.fill: parent
+    }
 
     Item {
         id: idMainWindow
         anchors.fill: parent
         property string viewType: "list"
+        state: "statemainview"
 
         Column {
             Rectangle {
@@ -24,6 +29,20 @@ Window {
                     fillMode: Image.TileHorizontally
 
                     anchors.fill: parent
+
+                    Text {
+                        text: "XBMC"
+                        font.family: "Californian FB"
+                        font.italic: true
+                        font.pointSize: 42
+                        color: "white"
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 5
+                        anchors.left: parent.left
+                        anchors.leftMargin: 20
+
+                        visible: idMainWindow.state == "statemainview" ? true : false
+                    }
                 }
 
                 Image {
@@ -106,48 +125,63 @@ Window {
             }
 
             HomeView {
-                id: idHomeView
-                opacity: 1
+                id: idHomeView                
+                scale: 1
                 visible: true
+
+                Behavior on scale { NumberAnimation { duration: 300 } }
+
             }
 
             VideoView {
-                id: idVideoView
-                opacity: 0
-                visible: false                
+                id: idVideoView                
+                scale: 0.8
+                visible: false
+
+                Behavior on scale { NumberAnimation { duration: 300 } }
             }
             PicturesView {
                 id: idPicturesView
-                opacity: 0
+                scale: 0.8
                 visible: false
+
+                Behavior on scale { NumberAnimation { duration: 300 } }
             }
             MusicView {
-                id: idMusicView
-                opacity: 0
+                id: idMusicView                
+                scale: 0.8
                 visible: false
+
+                Behavior on scale { NumberAnimation { duration: 300 } }
             }
             ProgramsView {
-                id: idProgramsView
-                opacity: 0
+                id: idProgramsView                
+                scale: 0.8
                 visible: false
+
+                Behavior on scale { NumberAnimation { duration: 300 } }
             }
             SettingView {
-                id: idSettingView
-                opacity: 0
+                id: idSettingView                
+                scale: 0.8
                 visible: false
+
+                Behavior on scale { NumberAnimation { duration: 300 } }
             }
             SettingContentView {
                 id: idSettingContentView
-                opacity: 0
-                visible: false
+                scale: 0.8
+                visible: false                
+
+                Behavior on scale { NumberAnimation { duration: 300 } }
             }
         }
 
         NumberAnimation {
-            id: showVideoView; target: idVideoView; property: "opacity"; to: 1; duration: 200
+            id: showVideoView; //target: idVideoView; property: "opacity"; to: 1; duration: 200
         }
         NumberAnimation {
-            id: showHomeView; target: idHomeView; property: "opacity"; to: 1; duration: 200
+            id: showHomeView; //target: idHomeView; property: "opacity"; to: 1; duration: 200
         }
         NumberAnimation {
             id: showPicturesView; target: idPicturesView; property: "opacity"; to: 1; duration: 200
@@ -304,7 +338,8 @@ Window {
                                 if( idMainWindow.state == "statevideoview" ||
                                     idMainWindow.state == "statemusicview" ||
                                     idMainWindow.state == "statepicturesview" ||
-                                    idMainWindow.state == "stateprogramsview" )
+                                    idMainWindow.state == "stateprogramsview" ||
+                                    idMainWindow.state == "statesettingview" )
                                 {
                                     showHomeView.running = true;
                                     idMainWindow.state = "homevideoview";
@@ -423,68 +458,62 @@ Window {
         states: [
             State {
                 name: "statemainview"
-                PropertyChanges {target: idVideoView; opacity: 0 }
-                PropertyChanges { target: idVideoView; visible: false }
-                PropertyChanges { target: idHomeView; visible: true }
+                PropertyChanges {target: idVideoView; scale: 0.8; visible: false }
+                PropertyChanges { target: idHomeView; scale: 1; visible: true }
                 PropertyChanges { target: idHomeIcon; visible: false }
                 PropertyChanges { target: idHomeMenuRow; visible: true }
-                PropertyChanges { target: idSubMenuRow; visible: false }
+                PropertyChanges { target: idSubViewMenuRow; visible: false }
 
             },
             State {
                 name: "statevideoview"
-                PropertyChanges {target: idHomeView; opacity: 0 }
-                PropertyChanges { target: idHomeView; visible: false }
-                PropertyChanges { target: idVideoView; visible: true }
+                PropertyChanges {target: idHomeView;  scale: 0.8; visible: false }
+                PropertyChanges {target: idVideoView;  scale: 1; visible: true }
                 PropertyChanges { target: idHomeIcon; visible: true }
                 PropertyChanges { target: idHomeMenuRow; visible: false }
                 PropertyChanges { target: idSubViewMenuRow; visible: true }                
             },
             State {
                 name: "statepicturesview"
-                PropertyChanges {target: idHomeView; opacity: 0 }
-                PropertyChanges { target: idHomeView; visible: false }
-                PropertyChanges { target: idPicturesView; visible: true }
+                PropertyChanges {target: idHomeView; scale: 0.8; visible: false }
+                PropertyChanges { target: idPicturesView; scale: 1; visible: true }
                 PropertyChanges { target: idHomeIcon; visible: true }
                 PropertyChanges { target: idHomeMenuRow; visible: false }
                 PropertyChanges { target: idSubViewMenuRow; visible: true }
             },
             State {
                 name: "statemusicview"
-                PropertyChanges {target: idHomeView; opacity: 0 }
-                PropertyChanges { target: idHomeView; visible: false }
-                PropertyChanges { target: idMusicView; visible: true }
+                PropertyChanges {target: idHomeView; scale: 0.8; visible: false }
+                PropertyChanges { target: idMusicView; scale: 1; visible: true }
                 PropertyChanges { target: idHomeIcon; visible: true }
                 PropertyChanges { target: idHomeMenuRow; visible: false }
                 PropertyChanges { target: idSubViewMenuRow; visible: true }
             },
             State {
                 name: "stateprogramsview"
-                PropertyChanges {target: idHomeView; opacity: 0 }
-                PropertyChanges { target: idHomeView; visible: false }
-                PropertyChanges { target: idProgramsView; visible: true }
+                PropertyChanges {target: idHomeView; scale: 0.8; visible: false }
+                PropertyChanges { target: idProgramsView; scale: 1; visible: true }
                 PropertyChanges { target: idHomeIcon; visible: true }
                 PropertyChanges { target: idHomeMenuRow; visible: false }
                 PropertyChanges { target: idSubViewMenuRow; visible: true }
            },
            State {
                 name: "statesettingview"
-                PropertyChanges { target: idHomeView; opacity: 0 }
-                PropertyChanges { target: idHomeView; visible: false }
-                PropertyChanges { target: idSettingView; visible: true }
+                PropertyChanges { target: idHomeView; scale: 0.8; visible: false }
+                PropertyChanges { target: idSettingView; scale: 1; visible: true }
                 PropertyChanges { target: idHomeIcon; visible: true }
                 PropertyChanges { target: idHomeMenuRow; visible: false }
                 PropertyChanges { target: idSubViewMenuRow; visible: true }
             },
             State {
-                 name: "statesettingappearanceview"
-                 PropertyChanges { target: idHomeView; opacity: 0 }
-                 PropertyChanges { target: idHomeView; visible: false }
-                 PropertyChanges { target: idSettingView; visible: false }
+                 name: "statesettingcontentview"
+                 PropertyChanges { target: idHomeView; scale: 0.8; visible: false }
+                 PropertyChanges { target: idSettingView; scale: 0.8; visible: false }
+                 PropertyChanges { target: idSettingContentView; scale: 1; visible: true }
                  PropertyChanges { target: idHomeIcon; visible: true }
                  PropertyChanges { target: idHomeMenuRow; visible: false }
-                 PropertyChanges { target: idSubViewMenuRow; visible: true }
-                 PropertyChanges { target: idSettingContentView; visible: true }
+                 PropertyChanges { target: idSubViewMenuRow; visible: false }
+
              }
         ]
     }
