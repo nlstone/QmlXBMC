@@ -2,7 +2,9 @@ TEMPLATE = app
 
 QT += qml quick
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    filemodel.cpp \
+    fileinfoutils.cpp
 
 RESOURCES += qml.qrc
 
@@ -20,5 +22,8 @@ OTHER_FILES += \
     MusicView.qml \
     ProgramsView.qml \
     SettingView.qml \
-    SettingContentView.qml \
-    AppearanceContentModel.qml
+    SettingContentView.qml
+
+HEADERS += \
+    filemodel.h \
+    fileinfoutils.h

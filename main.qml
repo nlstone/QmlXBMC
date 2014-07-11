@@ -129,7 +129,7 @@ Window {
                 scale: 1
                 visible: true
 
-                Behavior on scale { NumberAnimation { duration: 300 } }
+                Behavior on scale { NumberAnimation { duration: 200 } }
 
             }
 
@@ -138,42 +138,42 @@ Window {
                 scale: 0.8
                 visible: false
 
-                Behavior on scale { NumberAnimation { duration: 300 } }
+                Behavior on scale { NumberAnimation { duration: 200 } }
             }
             PicturesView {
                 id: idPicturesView
                 scale: 0.8
                 visible: false
 
-                Behavior on scale { NumberAnimation { duration: 300 } }
+                Behavior on scale { NumberAnimation { duration: 200 } }
             }
             MusicView {
                 id: idMusicView                
                 scale: 0.8
                 visible: false
 
-                Behavior on scale { NumberAnimation { duration: 300 } }
+                Behavior on scale { NumberAnimation { duration: 200 } }
             }
             ProgramsView {
                 id: idProgramsView                
                 scale: 0.8
                 visible: false
 
-                Behavior on scale { NumberAnimation { duration: 300 } }
+                Behavior on scale { NumberAnimation { duration: 200 } }
             }
             SettingView {
                 id: idSettingView                
                 scale: 0.8
                 visible: false
 
-                Behavior on scale { NumberAnimation { duration: 300 } }
+                Behavior on scale { NumberAnimation { duration: 200 } }
             }
             SettingContentView {
                 id: idSettingContentView
                 scale: 0.8
                 visible: false                
 
-                Behavior on scale { NumberAnimation { duration: 300 } }
+                Behavior on scale { NumberAnimation { duration: 200 } }
             }
         }
 

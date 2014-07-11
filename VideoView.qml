@@ -2,7 +2,7 @@ import QtQuick 2.2
 
 Item {
     height: idMainWindow.height / 10 * 9
-    width: idMainWindow.width
+    width: idMainWindow.width        
 
     Column {
         Rectangle {
@@ -53,13 +53,18 @@ Item {
         }
         ListElement{
             iconPath: "media/DefaultProgram.png"
-            content: "Removable Disk(D:)"
+            content: "C:/"
             index: 1
+        }
+        ListElement{
+            iconPath: "media/DefaultProgram.png"
+            content: "Removable Disk(E:)"
+            index: 2
         }
         ListElement{
             iconPath: "media/DefaultAddSource.png"
             content: "Add Videos.."
-            index: 2
+            index: 3
         }
     }
 
@@ -102,12 +107,13 @@ Item {
         anchors.top: parent.top
         anchors.leftMargin: 100
         anchors.topMargin: 50
+        height: parent.height - 200
 
         highlight: Rectangle { color: "lightsteelblue"; radius: 4}
         highlightResizeDuration: 0
 
-        height: 400
-        width: parent.width - 200
+
+        width: parent.width - 100
 
         model: idVideoListModal
         visible: idMainWindow.viewType == "list"
@@ -117,9 +123,11 @@ Item {
 
     GridView {
         id: idVideoGridView
-        anchors.fill: parent
+        height: parent.height - 200
+        width: parent.width
+        anchors.left: parent.left
         anchors.leftMargin: 20
-        anchors.rightMargin: 20
+        anchors.top: parent.top
         anchors.topMargin: 20
         visible: idMainWindow.viewType != "list"
 
@@ -148,16 +156,17 @@ Item {
                         {
                             idVideoListView.viewType = "VideoFilesView";
                             idVideoListView.model = idVideoFilesModal;
+                            //idVideoGridView.model = idVideoFilesModal;
                         }
                         else if( index == 1 )
                         {
                             idVideoListView.viewType = "VideoPlaylistsView";
-                            idVideoListView.model = idVideoPlaylistsModal;
+                            idVideoListView.model = idVideoPlaylistsModal;                            
                         }
                         else if( index == 2 )
                         {
                             idVideoListView.viewType = "VideoAddonsView";
-                            idVideoListView.model = idVideoAddonsModal;
+                            idVideoListView.model = idVideoAddonsModal;                            
                         }
                     }
                     else if( idVideoListView.viewType == "VideoFilesView" ||
@@ -168,6 +177,32 @@ Item {
                         {
                             idVideoListView.viewType = "VideoMainView";
                             idVideoListView.model = idVideoListModal;
+
+                        }
+                        else if( index == 1 )
+                        {
+                            idVideoListView.viewType = "VideoFileListView";
+                            fileInfoUtils.getSubFileModel("C:/");
+                            idVideoListView.model = idVideoFileListModel;
+                        }
+                    }
+                    else if( idVideoListView.viewType == "VideoFileListView" )
+                    {
+                        if( index == 0 )
+                        {
+                            if( filePath == "C:" )
+                            {
+                                idVideoListView.viewType = "VideoFilesView";
+                                idVideoListView.model = idVideoFilesModal;
+                            }
+                            else
+                            {
+                                fileInfoUtils.getSubFileModel( index );
+                            }
+                        }
+                        else
+                        {
+                            fileInfoUtils.getSubFileModel( index );
                         }
                     }
                 }
@@ -267,6 +302,32 @@ Item {
                             idVideoListView.viewType = "VideoMainView";
                             idVideoListView.model = idVideoListModal;
                             idVideoGridView.model = idVideoListModal;
+                        }
+                        else if( index == 1 )
+                        {
+                            idVideoListView.viewType = "VideoFileListView"
+                            fileInfoUtils.getSubFileModel("C:/")
+                            idVideoListView.model = idVideoFileListModel;
+                            idVideoGridView.model = idVideoFileListModel;
+                        }
+                    }
+                    else if( idVideoListView.viewType == "VideoFileListView" )
+                    {
+                        if( index == 0 )
+                        {
+                            if( filePath == "C:" )
+                            {
+                                idVideoListView.viewType = "VideoFilesView";
+                                idVideoListView.model = idVideoFilesModal;
+                            }
+                            else
+                            {
+                                fileInfoUtils.getSubFileModel( index );
+                            }
+                        }
+                        else
+                        {
+                            fileInfoUtils.getSubFileModel( index );
                         }
                     }
                 }
